@@ -16,13 +16,13 @@ https://ai-salary-predictor.netlify.app/
 
 ## 📸 Screenshots
 
-![AI-Salary-Predictor](Screenshots/screenshot1.png)
+![AI-Salary-Predictor](Screenshots/Screenshot1.png)
 
-![AI-Salary-Predictor](Screenshots/screenshot2.png)
+![AI-Salary-Predictor](Screenshots/Screenshot2.png)
 
-![AI-Salary-Predictor](Screenshots/screenshot3.png)
+![AI-Salary-Predictor](Screenshots/Screenshot3.png)
 
-![AI-Salary-Predictor](Screenshots/screenshot4.png)
+![AI-Salary-Predictor](Screenshots/Screenshot4.png)
 
 ---
 
