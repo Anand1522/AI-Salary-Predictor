@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🚀 AI Salary Predictor</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.container{
+width:900px;
+max-width:100%;
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+h2{
+text-align:center;
+color:#38bdf8;
+margin-bottom:20px;
+}
+
+select{
+width:100%;
+padding:12px;
+margin-top:12px;
+border:none;
+border-radius:8px;
+font-size:15px;
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-top:15px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:20px;
+background:#38bdf8;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+background:#0f172a;
+padding:15px;
+border-radius:10px;
+line-height:1.8;
+white-space:pre-wrap;
+}
+
+.progress{
+height:20px;
+background:#334155;
+border-radius:10px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.bar{
+height:100%;
+background:#22c55e;
+}
+
+.footer{
+margin-top:15px;
+text-align:center;
+color:#94a3b8;
+font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🚀 AI Salary Predictor</h2>
+
+<select id="role">
+<option value="">Select Job Role</option>
+<option>Data Scientist</option>
+<option>Data Analyst</option>
+<option>AI Engineer</option>
+<option>Software Engineer</option>
+<option>Full Stack Developer</option>
+<option>Cyber Security Analyst</option>
+</select>
+
+<select id="experience">
+<option value="">Years of Experience</option>
+<option value="0">0 - Fresher</option>
+<option value="1">1 Year</option>
+<option value="2">2 Years</option>
+<option value="3">3 Years</option>
+<option value="5">5+ Years</option>
+</select>
+
+<select id="degree">
+<option value="">Highest Qualification</option>
+<option>Diploma</option>
+<option>B.Tech</option>
+<option>M.Tech</option>
+<option>MCA</option>
+</select>
+
+<select id="location">
+<option value="">Location</option>
+<option>Tier 1 City</option>
+<option>Tier 2 City</option>
+<option>Tier 3 City</option>
+<option>Remote</option>
+</select>
+
+<h3 style="margin-top:15px;">Select Skills</h3>
+
+<div class="skills">
+
+<label><input type="checkbox" value="Python"> Python</label>
+<label><input type="checkbox" value="SQL"> SQL</label>
+<label><input type="checkbox" value="Machine Learning"> Machine Learning</label>
+<label><input type="checkbox" value="Deep Learning"> Deep Learning</label>
+<label><input type="checkbox" value="Data Science"> Data Science</label>
+<label><input type="checkbox" value="Pandas"> Pandas</label>
+<label><input type="checkbox" value="NumPy"> NumPy</label>
+<label><input type="checkbox" value="Power BI"> Power BI</label>
+<label><input type="checkbox" value="Tableau"> Tableau</label>
+<label><input type="checkbox" value="HTML"> HTML</label>
+<label><input type="checkbox" value="CSS"> CSS</label>
+<label><input type="checkbox" value="JavaScript"> JavaScript</label>
+<label><input type="checkbox" value="React"> React</label>
+<label><input type="checkbox" value="Node.js"> Node.js</label>
+<label><input type="checkbox" value="MongoDB"> MongoDB</label>
+<label><input type="checkbox" value="AWS"> AWS</label>
+<label><input type="checkbox" value="Git"> Git</label>
+<label><input type="checkbox" value="GitHub"> GitHub</label>
+
+</div>
+
+<button onclick="predictSalary()">
+Predict Salary
+</button>
+
+<div id="result" class="result">
+Salary prediction will appear here...
+</div>
+
+<div class="footer">
+Day 8 • 30 Days 30 AI Websites Challenge
+</div>
+
+</div>
+
+<script>
+
+function predictSalary(){
+
+let role =
+document.getElementById("role").value;
+
+let experience =
+parseInt(document.getElementById("experience").value);
+
+let degree =
+document.getElementById("degree").value;
+
+let location =
+document.getElementById("location").value;
+
+if(
+role==="" ||
+isNaN(experience) ||
+degree==="" ||
+location===""){
+alert("Please fill all fields.");
+return;
+}
+
+let selectedSkills=[];
+
+document
+.querySelectorAll('input[type="checkbox"]:checked')
+.forEach(skill=>{
+selectedSkills.push(skill.value);
+});
+
+let score = selectedSkills.length * 5;
+
+score += experience * 8;
+
+if(degree==="B.Tech") score+=10;
+if(degree==="M.Tech") score+=15;
+if(degree==="MCA") score+=12;
+
+if(location==="Tier 1 City") score+=10;
+if(location==="Remote") score+=8;
+
+if(score>100){
+score=100;
+}
+
+let salary="";
+
+if(score<30){
+salary="₹3 LPA - ₹5 LPA";
+}
+else if(score<50){
+salary="₹5 LPA - ₹8 LPA";
+}
+else if(score<70){
+salary="₹8 LPA - ₹12 LPA";
+}
+else if(score<85){
+salary="₹12 LPA - ₹18 LPA";
+}
+else{
+salary="₹18 LPA - ₹30+ LPA";
+}
+
+let readiness="Beginner";
+
+if(score>=80){
+readiness="Excellent";
+}
+else if(score>=60){
+readiness="Good";
+}
+else if(score>=40){
+readiness="Average";
+}
+
+let suggestions=[];
+
+if(selectedSkills.length<5){
+suggestions.push("Learn more industry-relevant skills.");
+}
+
+if(!selectedSkills.includes("Git")){
+suggestions.push("Learn Git.");
+}
+
+if(!selectedSkills.includes("GitHub")){
+suggestions.push("Build projects on GitHub.");
+}
+
+if(!selectedSkills.includes("AWS")){
+suggestions.push("Learn Cloud Computing (AWS).");
+}
+
+if(suggestions.length===0){
+suggestions.push("Your profile looks strong. Keep building projects.");
+}
+
+document.getElementById("result").innerHTML=`
+
+<h3>💰 Predicted Salary: ${salary}</h3>
+
+<p><b>🎯 Job Readiness:</b> ${readiness}</p>
+
+<p><b>📊 Employability Score:</b> ${score}/100</p>
+
+<div class="progress">
+<div class="bar" style="width:${score}%"></div>
+</div>
+
+<h4>🛠 Skills Selected (${selectedSkills.length})</h4>
+
+<ul>
+${selectedSkills.map(skill=>`<li>${skill}</li>`).join("")}
+</ul>
+
+<h4>📈 Suggestions</h4>
+
+<ul>
+${suggestions.map(item=>`<li>${item}</li>`).join("")}
+</ul>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
