@@ -49,7 +49,7 @@ https://ai-salary-predictor.netlify.app/
 - HTML
 - CSS
 - JavaScript
-* Built with the help of AI-assisted development tools
+- Built with the help of AI-assisted development tools
 ---
 
 ## 📋 How It Works
